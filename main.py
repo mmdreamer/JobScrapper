@@ -10,7 +10,7 @@ db = {}
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", bgImage="url('/static/img/bg_home.jpg')")
 
 
 @app.route("/report")
@@ -22,11 +22,11 @@ def report():
         if existingJobs:
             jobs = existingJobs
         else:
-            jobs = so_get_job(word) + indeed_get_job(word)
+            jobs = so_get_job(word)  # + indeed_get_job(word)
             db[word] = jobs
     else:
         return redirect("/")
-    return render_template("report.html", searchingBy=word, resultNumber=len(jobs), jobs=jobs)
+    return render_template("report.html", searchingBy=word, resultNumber=len(jobs), jobs=jobs, bgImage="none")
 
 
 @app.route("/export")

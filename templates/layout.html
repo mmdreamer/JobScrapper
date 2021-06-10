@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html style="background-image:{{bgImage}}">
+    <head>
+        <title>JOB SEARCH</title>
+        <link rel="icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="/static/img/favicon.ico" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    </html>
+    <body>
+        <header>
+            <h1>
+                <span>Indeed Logo</span><span>Stackoverflow Logo</span>
+            </h1>
+        </header>
+        {% block content %}{% endblock %}
+        <footer>Copyright &copy; 2021 All rights reserved By Miri Kim </footer>
+    </body>
+</html>

@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JOB SEARCH</title>
-    </html>
-    <body>
-        <h1>JOB SEARCH</h1>
-        <form action="/report" method="get">
-            <input type="text" placeholder="Search a job" name="word" />
-            <button>Search</button>
-        </form>
-    </body>
-</html>
+{% extends "layout.html" %} {% block content %}
+<section class="home">
+	<h2>JOB SEARCH</h2>
+	<form action="/report" method="get">
+		<input type="text" placeholder="Search a job" name="word" />
+		<button type="submit">Search</button>
+	</form>
+</section>
+{% endblock %}

@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>JOB SEARCH</title>
-		<style>
-			section {
-				display: grid;
-				gap: 20px;
-				grid-template-columns: repeat(4, 1fr);
-			}
-		</style>
-	</head>
-	<body>
-		<h1>Search Results</h1>
-		<h3>Found {{resultNumber}} results for : {{searchingBy}}</h3>
+{% extends "layout.html" %} {% block content %}
+<section class="report">
+	<div class="report-title">
+		<h2>Search Results</h2>
+		<h3>
+			Found <strong>{{resultNumber}}</strong> results for :
+			<strong>{{searchingBy}}</strong>
+		</h3>
 		<a href="/export?word={{searchingBy}}">Export to CSV</a>
-		<section>
-			<h4>TITLE</h4>
-			<h4>COMPANY</h4>
-			<h4>LOCATION</h4>
-			<h4>LINK</h4>
-			{% for job in jobs %}
-			<span>{{job.title}}</span>
-			<span>{{job.company}}</span>
-			<span>{{job.location}}</span>
-			<a href="{{job.apply_link}}" target="_blank">APPLY</a>
-			{% endfor %}
-		</section>
-	</body>
-</html>
+	</div>
+	<div class="report-result">
+		<h4>TITLE</h4>
+		<h4>COMPANY</h4>
+		<h4>LOCATION</h4>
+		<h4>LINK</h4>
+		{% for job in jobs %}
+		<span>{{job.title}}</span>
+		<span>{{job.company}}</span>
+		<span>{{job.location}}</span>
+		<a href="{{job.apply_link}}" target="_blank">APPLY</a>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}
