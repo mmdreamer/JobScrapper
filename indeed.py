@@ -8,7 +8,7 @@ def get_last_page(url):
     pagination = soup.find("ul", {"class": "pagination-list"})
     links = pagination.find_all("a")
     pages = []
-    for link in links[:-1]:  # 마지막요소 Next는 빼고 리스트에 담아줘야함(int값으로 바꿀때 오류)
+    for link in links[:-1]:
         pages.append(int(link.string))
 
     max_page = pages[-1]
@@ -19,7 +19,7 @@ def extract_job(html):
     title = html.find("h2", {"class": "title"}).find("a")["title"].strip("-")
     company = html.find("span", {"class": "company"})
     company_anchor = company.find("a")
-    if company:  # company 값이 있을수도 있고 없읈도 있으니.. 오류최소화를 위한코드
+    if company:
         if company_anchor is not None:
             company = str(company_anchor.string)
         else:
@@ -40,7 +40,7 @@ def extract_jobs(last_page, url):
         result = requests.get(f"{url}&start={page}")
         soup = BeautifulSoup(result.text, "html.parser")
         results = soup.find_all(
-            "div", {"class": "jobsearch-SerpJobCard"})  # 일자리 리스트 개별영역 겸 링크
+            "div", {"class": "jobsearch-SerpJobCard"})
         for result in results:
             job = extract_job(result)
             jobs.append(job)
@@ -49,6 +49,6 @@ def extract_jobs(last_page, url):
 
 def get_jobs(word):
     url = "https://www.indeed.com/jobs?q={word}}"
-    last_page = get_last_page(url)  # function 실행하여 리턴값받음
+    last_page = get_last_page(url)
     jobs = extract_jobs(last_page, url)
     return jobs

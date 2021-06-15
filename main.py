@@ -15,14 +15,14 @@ def home():
 
 @app.route("/report")
 def report():
-    word = request.args.get("word")  # print(request.args.get("word"))
+    word = request.args.get("word")
     if word:
         word = word.lower()
         existingJobs = db.get(word)
         if existingJobs:
             jobs = existingJobs
         else:
-            jobs = so_get_job(word)  # indeed_get_job(word)  +
+            jobs = so_get_job(word) + indeed_get_job(word)
             db[word] = jobs
     else:
         return redirect("/")
