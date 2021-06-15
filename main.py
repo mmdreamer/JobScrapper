@@ -3,7 +3,7 @@ from so import get_jobs as so_get_job
 from indeed import get_jobs as indeed_get_job
 from exporter import save_to_file
 
-app = Flask("SuperScrapper")
+app = Flask("JobScrapper")
 
 db = {}
 
@@ -22,7 +22,7 @@ def report():
         if existingJobs:
             jobs = existingJobs
         else:
-            jobs = so_get_job(word)  # + indeed_get_job(word)
+            jobs = so_get_job(word)  # indeed_get_job(word)  +
             db[word] = jobs
     else:
         return redirect("/")
