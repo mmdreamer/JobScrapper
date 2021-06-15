@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="/static/img/favicon.ico" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
         <script src="static/js/common.js"></script>
+        <script src="static/js/jquery-3.2.1.min.js"></script>
     </html>
     <body id="bodyContent">
         <header>
@@ -16,7 +17,7 @@
         </header>
         {% block content %}{% endblock %}
         <footer>
-            <a href="#bodyContent" id="btnTop" title="Go to top">Top</a>
+            <button onclick="topFunction()" id="btnTop" title="Go to top">TOP</button>
             <strong class="copyright">Copyright &copy; 2021 All rights reserved By Miri Kim </strong>
         </footer>
     </body>
